@@ -1,0 +1,206 @@
+.guestbook {
+  &-area {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 50px 0 100px;
+
+    @media screen and (min-width:768px) {
+      padding: 100px 0;
+    }
+  }
+
+  &-form {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (min-width:768px) {
+      width: 500px;
+    }
+  }
+
+  &-name,
+  &-password,
+  &-textarea {
+    border: 1px solid #222;
+    height: 50px;
+    box-sizing: border-box;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+
+  &-name,
+  &-password {
+    margin-bottom: 10px;
+
+    @media screen and (max-width:768px) {
+      width: 100%;
+    }
+
+    @media screen and (min-width:768px) {
+      flex: 1;
+    }
+  }
+
+  &-name {
+    @media screen and (min-width:768px) {
+      margin-right: 10px;
+    }
+
+    &-container {
+      @media screen and (min-width:768px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+
+  &-textarea {
+    resize: none;
+    font-family: inherit;
+    padding: 10px;
+    margin: 0 0 10px 0;
+    width: 100%;
+    height: 100px;
+  }
+
+  &-submit-button {
+    width: 100%;
+    height: 50px;
+    background-color: #222;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    display: block;
+    transition: background-color .2s;
+
+    &:hover {
+      background-color: #000;
+    }
+  }
+
+  &-no-result {
+    display: block;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 6px;
+    background-color: #efefef;
+    text-align: center;
+    width: 100%;
+    margin: 30px auto 0;
+
+    @media screen and (min-width:768px) {
+      max-width: 500px;
+    }
+  }
+
+  &-list {
+    width: 100%;
+    margin: 30px auto 0;
+
+    @media screen and (min-width:768px) {
+      max-width: 500px;
+    }
+  }
+
+  &-item {
+    display: block;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 14px;
+    border-radius: 6px;
+    background-color: #efefef;
+    position: relative;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &-details-container {
+    text-align: right;
+    margin-top: 20px;
+    padding-left: 20px;
+    box-sizing: border-box;
+  }
+
+  &-writer,
+  &-date {
+    display: block;
+    font-size: 12px;
+  }
+
+  &-delete {
+    &-container {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+    }
+
+    &-button {
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+      display: block;
+      background: url("../../assets/icons/delete.svg") no-repeat center center / contain;
+    }
+
+    &-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+
+      &-dimmed {
+        background-color: rgba(0, 0, 0, .4);
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+      }
+
+      &-inner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(100% - 30px);
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        box-sizing: border-box;
+        padding: 50px 20px 20px;
+        border: 1px solid #222;
+        border-radius: 6px;
+
+        @media screen and (min-width:768px) {
+          width: 500px;
+        }
+      }
+
+      .guestbook-password {
+        width: 100%;
+      }
+
+      &-desc {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      &-close-button {
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        background: url("../../assets/icons/close.svg") no-repeat center center / contain;
+      }
+    }
+  }
+}

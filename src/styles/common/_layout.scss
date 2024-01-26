@@ -1,0 +1,49 @@
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.main {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  box-sizing: border-box;
+
+  @media screen and (min-width:768px) {
+    padding: 0;
+  }
+}
+
+.section-title {
+  font-family: 'Cafe24Oneprettynight', serif;
+  font-size: 22px;
+  margin-bottom: 32px;
+  text-align: center;
+  position: relative;
+  font-weight: normal;
+
+  @media screen and (min-width:768px) {
+    font-size: 28px;
+  }
+
+  &::after {
+    display: block;
+    width: 50%;
+    height: 13px;
+    margin: 15px auto 0;
+    background: url("../../assets/images/line.png") no-repeat center center / contain;
+    content: '';
+
+    @media screen and (min-width:768px) {
+      width: 500px;
+    }
+  }
+}

@@ -1,0 +1,85 @@
+.give-love {
+  &-area {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    padding: 100px 0;
+    box-sizing: border-box;
+  }
+
+  &-container {
+    display: none;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    &.active {
+      display: block;
+    }
+  }
+
+  &-button {
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    background-color: #222;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background-color .2s;
+
+    &:hover {
+      background-color: #000;
+    }
+  }
+
+  &-title {
+    border-bottom: 1px solid #222;
+    margin: 20px 0 10px;
+    display: inline-block;
+  }
+
+  &-list {
+    border: 1px solid #222;
+    display: inline-block;
+    border-radius: 6px;
+    width: 100%;
+    box-sizing: border-box;
+
+    @media screen and (min-width:768px) {
+      width: 500px;
+    }
+  }
+
+  &-item {
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #222;
+    }
+  }
+
+  &-account {
+    &-number {
+      flex: 1;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    &-copy-button {
+      font-size: 14px;
+      border-radius: 6px;
+      border: 1px dashed #222;
+      padding: 5px;
+      box-sizing: border-box;
+      cursor: pointer;
+      color: #222;
+      text-decoration: none;
+    }
+  }
+}
