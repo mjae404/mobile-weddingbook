@@ -1,0 +1,189 @@
+.gallery {
+  &-area {
+    padding: 50px 0;
+
+    @media screen and (min-width:768px) {
+      padding: 100px 0;
+    }
+  }
+
+  &-swiper {
+    display: block;
+
+    &-container {
+      width: 100%;
+      height: 800px;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    @media screen and (min-width:768px) {
+      display: none;
+    }
+  }
+
+  &-list {
+    display: none;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-items: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media screen and (min-width:768px) {
+      display: flex;
+    }
+  }
+
+  &-item {
+    overflow: hidden;
+
+    @media screen and (max-width:1200px) {
+      width: 50%;
+      padding-top: 50%;
+      position: relative;
+    }
+
+    @media screen and (max-width:768px) {
+      width: 100%;
+      padding-top: 100%;
+    }
+
+    @media screen and (min-width:1200px) {
+      width: 400px;
+      height: 400px;
+    }
+  }
+
+  &-button {
+    display: block;
+    cursor: pointer;
+
+    @media screen and (max-width:1200px) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    vertical-align: top;
+
+    @media screen and (min-width:768px) {
+      transition: all .2s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &-active-image {
+    max-width: 500px;
+    height: auto;
+
+    @media screen and (max-width:768px) {
+      width: calc(100% - 30px);
+    }
+
+    @media screen and (min-width:768px) {
+      width: 100%;
+    }
+
+    &-close-button {
+      width: 25px;
+      height: 25px;
+      background: url("../../assets/icons/close.svg") no-repeat center center / contain;
+      position: absolute;
+      top: 15px;
+      right: 30px;
+      cursor: pointer;
+
+      @media screen and (min-width:768px) {
+        top: 0;
+        right: -35px;
+      }
+    }
+
+    &-inner {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      min-width: 500px;
+      min-height: 500px;
+    }
+
+    &-arrow {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+
+      @media screen and (max-width:768px) {
+        &.prev {
+          left: 35px;
+          background: url("../../assets/icons/arrow-left.svg") no-repeat center center / contain;
+        }
+
+        &.next {
+          right: 35px;
+          background: url("../../assets/icons/arrow-right.svg") no-repeat center center / contain;
+        }
+      }
+
+      @media screen and (min-width:768px) {
+        &.prev {
+          left: -45px;
+          background: url("../../assets/icons/arrow-left.svg") no-repeat center center / contain;
+        }
+
+        &.next {
+          right: -45px;
+          background: url("../../assets/icons/arrow-right.svg") no-repeat center center / contain;
+        }
+      }
+    }
+
+    &-area {
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vmin;
+      height: 100vmax;
+
+      @media screen and (min-width:992px) {
+        width: 100vmax;
+        height: 100vmin;
+      }
+    }
+
+    &-dimmed {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, .6);
+    }
+  }
+}
