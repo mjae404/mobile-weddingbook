@@ -76,7 +76,7 @@ function GuestBook() {
                 </div>
                 {comments.length >= 1 ? (
                     <ul className={styles['guestbook-list']}>
-                        {comments.map((comment, index) => (
+                        {comments.slice().reverse().map((comment, index) => (
                             <GuestBookComment contents={comment} handleDeletePopup={handleDeletePopup} key={index} />
                         ))}
                     </ul>
