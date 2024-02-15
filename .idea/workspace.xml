@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4a3bb97a-6896-4a31-bc8c-07728aaa9395" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/video/wedding_video.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/video/wedding_video.mp4" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +19,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 3
+}]]></component>
   <component name="ProjectId" id="2bTSzLUsVRCaoXRAaVfAqJIDOuT" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -25,8 +29,10 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "develop",
     "last_opened_file_path": "/Users/minjeekim/Desktop/KMJ/개발/frontend/mobile-weddingbook",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -45,6 +51,7 @@
       <option name="presentableId" value="Default" />
       <updated>1706237836300</updated>
       <workItem from="1706237837398" duration="1703000" />
+      <workItem from="1707974221166" duration="2931000" />
     </task>
     <servers />
   </component>
