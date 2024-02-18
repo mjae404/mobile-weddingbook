@@ -1,18 +1,16 @@
 // useGuestbook.js
-import { doc, getDoc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { doc, getDoc, updateDoc, arrayUnion } from "firebase/firestore";
 import useFirebase from "./useFirebase";
 import { useEffect, useState } from "react";
 
 export default function useGuestbook() {
     const [data, setData] = useState({ comments: [] });
     const [name, setName] = useState("");
-    const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const { db } = useFirebase();
 
     const weddingCollectionRef = doc(db, "wedding", "guestbook");
 
-    // Fetch comments from Firebase
     const getComments = async () => {
         try {
             const document = await getDoc(weddingCollectionRef);
@@ -24,6 +22,10 @@ export default function useGuestbook() {
     };
 
     const addComment = async (name, message) => {
+        if (!name || !message) {
+            alert("이름, 메시지를 입력해주세요.");
+            return;
+        }
         const newComment = {
             name,
             message,
@@ -54,8 +56,6 @@ export default function useGuestbook() {
         data,
         name,
         setName,
-        password,
-        setPassword,
         message,
         setMessage,
         addComment,

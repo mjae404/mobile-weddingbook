@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4a3bb97a-6896-4a31-bc8c-07728aaa9395" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GuestBook.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GuestBook.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/GuestBookComment.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/GuestBookComment.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/hooks/useGuestbook.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/hooks/useGuestbook.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/components/Couple.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/Couple.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/components/GuestBook.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/components/GuestBook.module.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +51,7 @@
       <updated>1706237836300</updated>
       <workItem from="1706237837398" duration="1703000" />
       <workItem from="1707974221166" duration="2931000" />
-      <workItem from="1708244129120" duration="835000" />
+      <workItem from="1708244129120" duration="1561000" />
     </task>
     <servers />
   </component>
