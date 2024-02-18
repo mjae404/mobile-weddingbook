@@ -4,37 +4,15 @@ import GuestBookComment from "./GuestBookComment";
 import useGuestbook from "../hooks/useGuestbook";
 
 function GuestBook() {
-    const { data: { comments }, addComment, deleteComment } = useGuestbook();
-    const [deletePopup, setDeletePopup] = useState(null);
+    const { data: { comments }, addComment } = useGuestbook();
     const [name, setName] = useState("");
-    const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
 
     const handleSubmit = () => {
-        // 이름, 비밀번호, 메시지를 이용하여 글 추가
-        addComment(name, password, message);
+        addComment(name, message);
 
-        // 추가 후 입력 필드 초기화
         setName("");
-        setPassword("");
         setMessage("");
-    };
-
-    const handleDeleteSubmit = () => {
-        // 비밀번호 검증 후 삭제 처리
-        deleteComment(password);
-
-        // 삭제 후 입력 필드 초기화
-        setPassword("");
-        setDeletePopup(false);
-    };
-
-    const handleDeletePopup = () => {
-        setDeletePopup(true);
-    };
-
-    const handleCloseDeletePopup = () => {
-        setDeletePopup(false);
     };
 
     return (
@@ -50,14 +28,6 @@ function GuestBook() {
                             value={name}
                             required={true}
                             onChange={(e) => setName(e.target.value)}
-                        />
-                        <input
-                            type="password"
-                            className={styles["guestbook-password"]}
-                            placeholder="비밀번호를 입력해주세요."
-                            value={password}
-                            required={true}
-                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
                     <textarea
@@ -77,39 +47,12 @@ function GuestBook() {
                 {comments.length >= 1 ? (
                     <ul className={styles['guestbook-list']}>
                         {comments.slice().reverse().map((comment, index) => (
-                            <GuestBookComment contents={comment} handleDeletePopup={handleDeletePopup} key={index} />
+                            <GuestBookComment contents={comment} key={index} />
                         ))}
                     </ul>
                 ) : (
                     <p className={styles['guestbook-no-result']}>등록된 방명록이 없습니다.</p>
                 )}
-
-                {
-                    deletePopup &&
-                    <div className={styles['guestbook-delete-popup']}>
-                        <div className={styles['guestbook-delete-popup-dimmed']} onClick={handleCloseDeletePopup}></div>
-                        <div className={styles['guestbook-delete-popup-inner']}>
-                            <p className={styles['guestbook-delete-popup-desc']}>삭제하시겠습니까?</p>
-                            <input
-                                type="password"
-                                className={styles['guestbook-password']}
-                                placeholder="비밀번호를 입력해주세요."
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
-                            <button
-                                type="submit"
-                                className={styles['guestbook-submit-button']}
-                                onClick={handleDeleteSubmit}
-                            >
-                                확인
-                            </button>
-                            <button type="button" className={styles['guestbook-delete-popup-close-button']} onClick={handleCloseDeletePopup}>
-                                <span className="blind">닫기</span>
-                            </button>
-                        </div>
-                    </div>
-                }
             </div>
         </>
     );

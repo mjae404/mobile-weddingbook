@@ -23,14 +23,9 @@ export default function useGuestbook() {
         }
     };
 
-    const addComment = async (name, password, message) => {
-        if (!name || !password || !message) {
-            alert("이름, 비밀번호, 메시지를 입력해주세요.");
-            return;
-        }
+    const addComment = async (name, message) => {
         const newComment = {
             name,
-            password,
             message,
             timestamp: new Date().toLocaleDateString('ko-KR', {
                 year: 'numeric',
@@ -50,37 +45,6 @@ export default function useGuestbook() {
         }
     };
 
-    const validatePassword = (password) => {
-        const foundComment = data.comments.find(comment => comment.password === password);
-        return !!foundComment;
-    };
-
-    const deleteComment = async (password) => {
-        try {
-            const isValidPassword = validatePassword(password);
-
-            if (isValidPassword) {
-                const commentToRemove = data.comments.find(comment => comment.password === password);
-
-                if (commentToRemove) {
-                    await updateDoc(weddingCollectionRef, {
-                        comments: arrayRemove(commentToRemove),
-                    });
-                    getComments();
-                } else {
-                    console.error("Comment not found with the provided password");
-                    alert("해당 비밀번호로 방명록을 찾을 수 없습니다.");
-                }
-            } else {
-                console.error("Invalid password");
-                alert("잘못된 비밀번호입니다.");
-            }
-        } catch (error) {
-            console.error("Error during deletion", error);
-            alert("삭제 중 오류가 발생했습니다.");
-        }
-    };
-
     useEffect(() => {
         // Initial data fetch
         getComments();
@@ -95,6 +59,5 @@ export default function useGuestbook() {
         message,
         setMessage,
         addComment,
-        deleteComment,
     };
 }
