@@ -18,9 +18,18 @@ import gallery06 from "../assets/images/gallery06.jpg";
 import gallery07 from "../assets/images/gallery07.jpg";
 import gallery08 from "../assets/images/gallery08.jpg";
 import gallery09 from "../assets/images/gallery09.jpg";
+import gallery10 from "../assets/images/gallery10.jpg";
+import gallery11 from "../assets/images/gallery11.jpg";
+import gallery12 from "../assets/images/gallery12.jpg";
+import gallery13 from "../assets/images/gallery13.jpg";
+import gallery14 from "../assets/images/gallery14.jpg";
+import gallery15 from "../assets/images/gallery15.jpg";
+import gallery16 from "../assets/images/gallery16.jpg";
+import gallery17 from "../assets/images/gallery17.jpg";
+import gallery18 from "../assets/images/gallery18.jpg";
 
 function Gallery() {
-    const galleryArray = [gallery01, gallery02, gallery03, gallery04, gallery05, gallery06, gallery07, gallery08, gallery09];
+    const galleryArray = [gallery01, gallery02, gallery03, gallery04, gallery05, gallery06, gallery07, gallery16, gallery08, gallery09, gallery10, gallery11, gallery18, gallery12, gallery15, gallery14, gallery13, gallery17];
 
     const [buttonStates, setButtonStates] = useState(Array(galleryArray.length).fill(false));
     const [activeIndex, setActiveIndex] = useState(0);
