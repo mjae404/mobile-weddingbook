@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
+// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -6,7 +7,7 @@ import 'swiper/css/zoom';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { Zoom, Navigation, Pagination } from 'swiper/modules';
+import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 
 import styles from "../styles/components/Gallery.module.scss";
 import gallery01 from "../assets/images/gallery01.jpg";
@@ -28,101 +29,66 @@ import gallery18 from "../assets/images/gallery18.jpg";
 function Gallery() {
     const galleryArray = [gallery01, gallery02, gallery03, gallery04, gallery05, gallery06, gallery07, gallery16, gallery08, gallery09, gallery10, gallery11, gallery18, gallery15, gallery12];
 
-    const [buttonStates, setButtonStates] = useState(Array(galleryArray.length).fill(false));
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const [showSwiper, setShowSwiper] = useState(false);
+    const [selectedSlideIndex, setSelectedSlideIndex] = useState(null); // New state to keep track of selected slide index
+
+    const handleShowSwiper = (index) => {
+        setSelectedSlideIndex(index); // Set the selected slide index
+        setShowSwiper(true);
+    };
+
+    const handleHideSwiper = () => {
+        setShowSwiper(false);
+    }
 
     useEffect(() => {
-        if (buttonStates.some(state => state)) {
-            document.body.classList.add('hidden');
+        const body = document.querySelector('body');
+        if (showSwiper) {
+            body.style.overflow = 'hidden';
         } else {
-            document.body.classList.remove('hidden');
+            body.style.overflow = 'visible';
         }
-    }, [buttonStates]);
-
-    const handleButtonClick = (index) => {
-        setButtonStates((prevButtonStates) => {
-            const newButtonStates = [...prevButtonStates];
-            newButtonStates[index] = !newButtonStates[index];
-            return newButtonStates;
-        });
-        setActiveIndex(index);
-    };
-
-    const handleArrowButtonClick = (direction) => {
-        setActiveIndex((prevIndex) => (prevIndex + direction + galleryArray.length) % galleryArray.length);
-        setButtonStates((prevButtonStates) => {
-            const newButtonStates = [...prevButtonStates];
-            newButtonStates[activeIndex] = false;
-            newButtonStates[(activeIndex + direction + galleryArray.length) % galleryArray.length] = true;
-            return newButtonStates;
-        });
-    };
-
-    const handleCloseButtonClick = (index) => {
-        setButtonStates((prevButtonStates) => {
-            const newButtonStates = [...prevButtonStates];
-            newButtonStates[index] = false;
-            return newButtonStates;
-        });
-    };
+    }, [showSwiper]);
 
     return (
         <div className={styles['gallery-area']}>
             <h2 className="section-title">갤러리</h2>
-            <ul className={styles['gallery-list']}>
-                {galleryArray.map((image, index) => (
-                    <li key={index} className={styles['gallery-item']}>
-                        <button
-                            type="button"
-                            className={`${styles['gallery-button']} ${buttonStates[index] ? styles['active'] : ''}`}
-                            onClick={() => handleButtonClick(index)}
-                        >
-                            <img src={image} alt="" className={styles['gallery-image']} />
-                        </button>
-                        {buttonStates[index] &&
-                            <div className={styles['gallery-active-image-area']}>
-                                <div className={styles['gallery-active-image-dimmed']} onClick={() => handleCloseButtonClick(index)}></div>
-                                <div className={styles['gallery-active-image-inner']}>
-                                    <img src={image} alt="" className={styles['gallery-active-image']} />
-                                    <button type="button" className={`${styles['gallery-active-image-arrow']} ${styles.prev}`} onClick={() => handleArrowButtonClick(-1)}>
-                                        <span className="blind">이전</span>
-                                    </button>
-                                    <button type="button" className={`${styles['gallery-active-image-arrow']} ${styles.next}`} onClick={() => handleArrowButtonClick(1)}>
-                                        <span className="blind">다음</span>
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className={styles['gallery-active-image-close-button']}
-                                        onClick={() => handleCloseButtonClick(index)}
-                                    >
-                                        <span className="blind">닫기 버튼</span>
-                                    </button>
-                                </div>
-                            </div>
-                        }
-                    </li>
-                ))}
-            </ul>
+            <div className={`${styles['gallery-slide-container']} ${showSwiper ? styles['active'] : ''}`}>
+                <div className={styles['gallery-slide-dimmed']} onClick={handleHideSwiper}></div>
+                <Swiper
+                    style={{
+                        '--swiper-navigation-color': '#fff',
+                        '--swiper-pagination-color': '#fff',
+                    }}
+                    loop={true}
+                    navigation={true}
+                    thumbs={{swiper: thumbsSwiper}}
+                    modules={[Navigation, Thumbs]}
+                    className={styles['gallery-slide-list']}
+                    initialSlide={selectedSlideIndex}
+                >
+                    {galleryArray.map((image, index) => (
+                        <SwiperSlide className={styles['gallery-slide-item']} key={index}>
+                            <img src={image} alt="" className={styles['gallery-slide-image']}/>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+                <button type="button" className={styles['gallery-slide-close-button']} onClick={handleHideSwiper}>
+                    <span className="blind">닫기</span>
+                </button>
+            </div>
             <Swiper
-                style={{
-                    '--swiper-navigation-color': '#fff',
-                    '--swiper-pagination-color': '#fff',
-                }}
-                zoom={true}
-                navigation={true}
+                onSwiper={setThumbsSwiper}
                 loop={true}
-                pagination={{
-                    clickable: true,
-                }}
-                modules={[Zoom, Navigation, Pagination]}
-                className={styles['gallery-swiper']}
-                onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+                slidesPerView={15}
+                freeMode={true}
+                modules={[FreeMode, Navigation, Thumbs]}
+                className={styles['gallery-list']}
             >
                 {galleryArray.map((image, index) => (
-                    <SwiperSlide key={index}>
-                        <div className={`swiper-zoom-container ${styles['gallery-swiper-container']}`}>
-                            <img src={image} alt="" className={styles['gallery-image']} />
-                        </div>
+                    <SwiperSlide className={styles['gallery-item']} key={index} onClick={() => handleShowSwiper(index)}>
+                        <img src={image} alt="" className={styles['gallery-image']}/>
                     </SwiperSlide>
                 ))}
             </Swiper>

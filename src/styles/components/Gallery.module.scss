@@ -7,70 +7,25 @@
     }
   }
 
-  &-swiper {
-    display: block;
-
-    &-container {
-      width: 100%;
-      height: 800px;
-
-      img {
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
-    }
-
-    @media screen and (min-width:768px) {
-      display: none;
-    }
-  }
-
   &-list {
-    display: none;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    justify-items: center;
-    align-items: center;
-    flex-wrap: wrap;
 
-    @media screen and (min-width:768px) {
-      display: flex;
+    :global .swiper-wrapper {
+      flex-wrap: wrap;
     }
   }
 
   &-item {
     overflow: hidden;
-
-    @media screen and (max-width:1200px) {
-      width: 50%;
-      padding-top: 50%;
-      position: relative;
-    }
-
-    @media screen and (max-width:768px) {
-      width: 100%;
-      padding-top: 100%;
-    }
+    width: 33% !important;
+    padding-top: 33%;
 
     @media screen and (min-width:1200px) {
-      width: 400px;
+      width: 400px !important;
       height: 400px;
-    }
-  }
-
-  &-button {
-    display: block;
-    cursor: pointer;
-
-    @media screen and (max-width:1200px) {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 100%;
-      height: 100%;
+      padding-top: 0;
     }
   }
 
@@ -80,7 +35,14 @@
     object-fit: cover;
     vertical-align: top;
 
-    @media screen and (min-width:768px) {
+    @media screen and (max-width:1200px) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    @media screen and (min-width:1200px) {
       transition: all .2s;
 
       &:hover {
@@ -89,101 +51,110 @@
     }
   }
 
-  &-active-image {
-    max-width: 500px;
-    height: auto;
-
-    @media screen and (max-width:768px) {
-      width: calc(100% - 30px);
-    }
-
-    @media screen and (min-width:768px) {
-      width: 100%;
-    }
-
-    &-close-button {
-      width: 25px;
-      height: 25px;
-      background: url("../../assets/icons/close.svg") no-repeat center center / contain;
-      position: absolute;
-      top: 15px;
-      right: 30px;
-      cursor: pointer;
-
-      @media screen and (min-width:768px) {
-        top: 0;
-        right: -35px;
-      }
-    }
-
-    &-inner {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      min-width: 500px;
-      min-height: 500px;
-    }
-
-    &-arrow {
-      width: 30px;
-      height: 30px;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-
-      @media screen and (max-width:768px) {
-        &.prev {
-          left: 35px;
-          background: url("../../assets/icons/arrow-left.svg") no-repeat center center / contain;
-        }
-
-        &.next {
-          right: 35px;
-          background: url("../../assets/icons/arrow-right.svg") no-repeat center center / contain;
-        }
-      }
-
-      @media screen and (min-width:768px) {
-        &.prev {
-          left: -45px;
-          background: url("../../assets/icons/arrow-left.svg") no-repeat center center / contain;
-        }
-
-        &.next {
-          right: -45px;
-          background: url("../../assets/icons/arrow-right.svg") no-repeat center center / contain;
-        }
-      }
-    }
-
-    &-area {
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+  &-slide {
+    &-container {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vmin;
-      height: 100vmax;
+      z-index: 100;
+      width: 100%;
+      height: 100%;
+      display: none;
 
-      @media screen and (min-width:992px) {
-        width: 100vmax;
-        height: 100vmin;
+      &.active {
+        display: block;
+      }
+
+      :global .swiper-button-prev,
+      :global .swiper-button-next {
+        width: 35px;
+        height: 35px;
+        padding: 0;
+
+        &::before {
+          width: 25px;
+          height: 25px;
+          border-radius: 50%;
+          content: '';
+
+          @media screen and (min-width:576px) {
+            width: 35px;
+            height: 35px;
+          }
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+
+      :global .swiper-button-prev::before {
+        background: rgba(0, 0, 0, .2) url("../../assets/icons/arrow-left.svg") no-repeat center center / 15px 15px;
+
+
+        @media screen and (min-width:576px) {
+          background: rgba(0, 0, 0, .2)  url("../../assets/icons/arrow-left.svg") no-repeat center center / 23px 23px;
+        }
+      }
+
+      :global .swiper-button-next::before {
+        background: rgba(0, 0, 0, .2)  url("../../assets/icons/arrow-right.svg") no-repeat center center / 15px 15px;
+
+        @media screen and (min-width:576px) {
+          background: rgba(0, 0, 0, .2)  url("../../assets/icons/arrow-right.svg") no-repeat center center / 23px 23px;
+        }
       }
     }
 
     &-dimmed {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .4);
+    }
+
+    &-close-button {
+      position: absolute;
+      top: calc(50% - 64vw);
+      left: calc(50% + 38vw);
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background: url("../../assets/icons/close.svg") no-repeat center center / contain;
+      z-index: 1000;
+
+      @media screen and (min-width:576px) {
+        top: calc(50% - 340px);
+        left: calc(50% + 270px);
+      }
+    }
+
+    &-list {
       position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background-color: rgba(0, 0, 0, .6);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+
+      @media screen and (min-width:576px) {
+        width: 500px;
+      }
+    }
+
+    &-item {
+      overflow: hidden;
+      width: 80vw;
+      height: 120vw;
+
+      @media screen and (min-width:576px) {
+        width: 500px;
+        height: 700px;
+      }
+    }
+
+    &-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 }
