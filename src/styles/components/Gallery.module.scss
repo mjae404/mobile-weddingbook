@@ -72,14 +72,11 @@
         padding: 0;
 
         &::before {
-          width: 25px;
-          height: 25px;
-          border-radius: 50%;
-          content: '';
-
           @media screen and (min-width:576px) {
             width: 35px;
             height: 35px;
+            border-radius: 50%;
+            content: '';
           }
         }
 
@@ -89,17 +86,12 @@
       }
 
       :global .swiper-button-prev::before {
-        background: rgba(0, 0, 0, .2) url("../../assets/icons/arrow-left.svg") no-repeat center center / 15px 15px;
-
-
         @media screen and (min-width:576px) {
           background: rgba(0, 0, 0, .2)  url("../../assets/icons/arrow-left.svg") no-repeat center center / 23px 23px;
         }
       }
 
       :global .swiper-button-next::before {
-        background: rgba(0, 0, 0, .2)  url("../../assets/icons/arrow-right.svg") no-repeat center center / 15px 15px;
-
         @media screen and (min-width:576px) {
           background: rgba(0, 0, 0, .2)  url("../../assets/icons/arrow-right.svg") no-repeat center center / 23px 23px;
         }
