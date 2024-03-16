@@ -21,6 +21,7 @@
     overflow: hidden;
     width: 33% !important;
     padding-top: 33%;
+    cursor: pointer;
 
     @media screen and (min-width:1200px) {
       width: 400px !important;
@@ -104,7 +105,7 @@
       background-color: rgba(0, 0, 0, .4);
     }
 
-    &-close-button {;
+    &-close-button {
       position: absolute;
       top: calc(50% - 67vw);
       left: 50%;
@@ -114,6 +115,7 @@
       border-radius: 50%;
       background: rgba(0, 0, 0, .4) url("../../assets/icons/close.svg") no-repeat center center / 18px 18px;
       z-index: 1000;
+      cursor: pointer;
 
       @media screen and (min-width:576px) {
         top: calc(50% - 335px);
