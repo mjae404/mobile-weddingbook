@@ -1,15 +1,13 @@
 import React from "react";
 import styles from "../styles/components/Location.module.scss";
+import KakaoMap from "./KakaoMap";
 
 function Location() {
 
     return (
         <div className={styles['location-area']}>
             <h2 className="section-title">오시는 길</h2>
-            <iframe className={styles['location-iframe']}
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.7790786244614!2d127.02889897625354!3d37.513128372052414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca3e11c19121f%3A0xfbc7cedee8a59ef6!2z7Luo67Kk7IWY7Zek66as7Lig!5e0!3m2!1sko!2skr!4v1704928403306!5m2!1sko!2skr"
-                width="100%" allowFullScreen="" loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade" title="googlemap"></iframe>
+            <KakaoMap />
             <ul className={styles['location-desc-list']}>
                 <li className={styles['location-desc-item']}>
                     <strong>Address.</strong>
