@@ -1,4 +1,4 @@
-import {useContext, createContext} from "react";
+import { useContext, createContext } from "react";
 import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore';
 
@@ -14,11 +14,13 @@ export const FirebaseContextProvider = ({children}) => {
         appId: process.env.REACT_APP_FIREBASE_APP_ID,
         measurementId:  process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
     };
-    const app =  initializeApp(firebaseConfig)
+
+    const app = initializeApp(firebaseConfig);
+
     return <FirebaseContext.Provider value={{app, db: getFirestore(app)}}>
         {children}
     </FirebaseContext.Provider>
 }
 export default function useFirebase() {
-    return useContext(FirebaseContext)
+    return useContext(FirebaseContext);
 }
